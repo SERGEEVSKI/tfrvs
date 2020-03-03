@@ -1,0 +1,1 @@
+fun main() { Laba2.run() }
