@@ -66,7 +66,7 @@ object StructuralRedundancy {
 
     /** Коэффициент S готовности */
     fun availabilityFactor(N: Int, λ: Double, m: Int, n: Int, µ: Double) = when (m) {
-        1 ->  1.0 - sum(0 , n-1) { j -> pjm(m, λ, µ, j).apply { print(this.toString() + '\n') }  }
+        1 ->  1.0 - sum(0, n - 1) { i -> pj(N, λ, µ, i)* sum(0, n - 1 - i) { l -> ul(N, m, µ, 0, i, l) } }
         N -> 1.0 - (λ.pow(N - n  + 1) * (λ + µ).pow(-(N - n + 1)))
         else -> throw IllegalStateException("Невозможное условие")
     }
